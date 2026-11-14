@@ -1,0 +1,21 @@
+# Python virtual environments
+.venv/
+.venv-*/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+.ruff_cache/
+
+# Generated ML model
+artifacts/
+
+# Environment variables
+.env
+.env.*
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,22 @@
+
+code,label
+"def add(a, b):
+    return a + b",0
+"def multiply(a, b):
+    return a * b",0
+"def greet(name):
+    return 'Hello ' + name",0
+"def square(number):
+    return number ** 2",0
+"def is_even(number):
+    return number % 2 == 0",0
+"def divide(a, b):
+    return a / b",1
+"def get_item(items, index):
+    return items[index + 100]",1
+"def calculate(values):
+    return sum(values) / 0",1
+"def run_code(source):
+    return eval(source)",1
+"def find_user(users, name):
+    return users[999999]",1

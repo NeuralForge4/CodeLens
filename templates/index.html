@@ -1,0 +1,102 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeLens — Python Quality Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"> <span class="brand-mark">⌘</span> CodeLens</a>
+    <span class="top-tag">PYTHON · CODE INTELLIGENCE</span>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">AI-ASSISTED STATIC ANALYSIS</div>
+      <h1>Find issues before<br><span>they find you.</span></h1>
+      <p>Inspect Python code for maintainability, risky patterns and likely defects — without executing the uploaded code.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel editor-panel">
+        <div class="panel-head">
+          <div><span class="dot"></span> SOURCE EDITOR</div>
+          <label class="upload-label" for="fileInput">↑ Upload .py</label>
+          <input id="fileInput" type="file" accept=".py,text/x-python" hidden>
+        </div>
+
+        <textarea id="codeInput" spellcheck="false" placeholder="# Paste your Python code here
+def calculate_total(items):
+    total = 0
+    for item in items:
+        total += item
+    return total"></textarea>
+
+        <div class="editor-foot">
+          <span id="fileName">pasted_code.py</span>
+          <div class="editor-actions">
+            <button id="newCodeBtn" class="ghost-btn" type="button">↻ Analyze New Code</button>
+            <button id="analyzeBtn" class="primary-btn" type="button">Analyze code <span>→</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-note">
+        <div class="side-icon">✳</div>
+        <h3>What gets checked?</h3>
+        <ul>
+          <li>Syntax and risky Python patterns</li>
+          <li>Unused imports and Ruff lint rules</li>
+          <li>Cyclomatic complexity</li>
+          <li>ML-based defect prediction</li>
+        </ul>
+        <p class="safe-note">Your source is analyzed, never executed.</p>
+      </div>
+    </section>
+
+    <div id="status" class="status" role="status"></div>
+
+    <section id="results" class="results hidden">
+      <div class="results-heading">
+        <div>
+          <div class="eyebrow">ANALYSIS REPORT</div>
+          <h2 id="resultTitle">Results</h2>
+        </div>
+
+        <div class="report-actions">
+          <button id="copyResultBtn" class="ghost-btn" type="button">Copy Result</button>
+          <button id="downloadReportBtn" class="ghost-btn" type="button">Download Report</button>
+          <button id="resetBtn" class="ghost-btn" type="button">Clear results</button>
+        </div>
+      </div>
+
+      <div class="metric-grid" id="metrics"></div>
+
+      <div class="result-grid">
+        <div class="panel result-panel">
+          <div class="panel-head">
+            <div>ISSUES & RECOMMENDATIONS</div>
+            <span id="findingCount" class="count-pill">0</span>
+          </div>
+          <div id="findings" class="finding-list"></div>
+        </div>
+
+        <div class="panel result-panel">
+          <div class="panel-head"><div>COMPLEXITY PROFILE</div></div>
+          <div id="complexity" class="complexity-list"></div>
+          <div id="notes" class="notes"></div>
+        </div>
+      </div>
+
+      <p class="disclaimer">Risk indicators are estimates, not proof that a program contains or is free of defects. Review findings before changing code.</p>
+    </section>
+
+    <footer>CodeLens · College mini-project · Static analysis only</footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
